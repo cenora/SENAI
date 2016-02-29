@@ -227,7 +227,7 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "OK";
             // 
-            // FrmPessoaCadastrar
+            // FrmCandidatoCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,7 +251,7 @@
             this.Controls.Add(this.labelUsuario);
             this.Controls.Add(this.labelNascimento);
             this.Controls.Add(this.labelNome);
-            this.Name = "FrmPessoaCadastrar";
+            this.Name = "FrmCandidatoCadastrar";
             this.Text = "Cadastro de Pessoa";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
             this.ResumeLayout(false);
