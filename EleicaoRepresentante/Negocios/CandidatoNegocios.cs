@@ -8,24 +8,24 @@ namespace Negocios
     /// <summary>
     /// Regras de Negocio para Pessoa
     /// </summary>
-    public class PessoaNegocios
+    public class CandidatoNegocios
     {
         AcessoDadosMySQL acessoDadosMySql = new AcessoDadosMySQL();
         /// <summary>
         /// Inserir pessoa no Banco
         /// </summary>
-        /// <param name="pessoa">Objeto Pessoa, DTO Pessoa</param>
+        /// <param name="cancidato">Objeto Pessoa, DTO Pessoa</param>
         /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Inserir(Pessoa pessoa)
+        public string Inserir(Candidato cancidato)
         {
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@Nome",pessoa.Nome);
-                acessoDadosMySql.AdicionarParametros("@Nascimento", pessoa.Nascimento);
-                acessoDadosMySql.AdicionarParametros("@Usuario", pessoa.Usuario);
-                acessoDadosMySql.AdicionarParametros("@Senha", pessoa.Senha);
-                acessoDadosMySql.AdicionarParametros("@Foto", pessoa.Foto);
+                acessoDadosMySql.AdicionarParametros("@Nome",cancidato.Nome);
+                acessoDadosMySql.AdicionarParametros("@Nascimento", cancidato.Nascimento);
+                acessoDadosMySql.AdicionarParametros("@Usuario", cancidato.Usuario);
+                acessoDadosMySql.AdicionarParametros("@Senha", cancidato.Senha);
+                acessoDadosMySql.AdicionarParametros("@Foto", cancidato.Foto);
                 string idPessoa = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "uspPessoaInserir").ToString();
                 return idPessoa;
             }
@@ -40,12 +40,12 @@ namespace Negocios
         /// </summary>
         /// <param name="pessoa">Objeto Pessoa, DTO Pessoa</param>
         /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Alterar(Pessoa pessoa)
+        public string Alterar(Candidato pessoa)
         {
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdPessoa);
+                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdCandidato);
                 acessoDadosMySql.AdicionarParametros("@Nome", pessoa.Nome);
                 acessoDadosMySql.AdicionarParametros("@Nascimento", pessoa.Nascimento);
                 acessoDadosMySql.AdicionarParametros("@Usuario", pessoa.Usuario);
@@ -64,12 +64,12 @@ namespace Negocios
         /// </summary>
         /// <param name="pessoa">Objeto Pessoa, DTO Pessoa</param>
         /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Excluir(Pessoa pessoa)
+        public string Excluir(Candidato pessoa)
         {
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdPessoa);
+                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdCandidato);
                 string idPessoa = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "uspPessoaExcluir").ToString();
                 return idPessoa;
             }
@@ -79,11 +79,11 @@ namespace Negocios
             }
         }
 
-        public PessoaCollection ConsultaPorNome(string nome)
+        public CandidatoCollection ConsultaPorNome(string nome)
         {
             try
             {
-                PessoaCollection pessoaColecao = new PessoaCollection();
+                CandidatoCollection pessoaColecao = new CandidatoCollection();
                 acessoDadosMySql.LimparParametros();
                 acessoDadosMySql.AdicionarParametros("@Nome", nome);
 
@@ -91,8 +91,8 @@ namespace Negocios
 
                 foreach (DataRow linha in dataTablePessoa.Rows)
                 {
-                    Pessoa pessoa = new Pessoa();
-                    pessoa.IdPessoa = Convert.ToInt32(linha["IdPessoa"]);
+                    Candidato pessoa = new Candidato();
+                    pessoa.IdCandidato = Convert.ToInt32(linha["IdPessoa"]);
                     pessoa.Nome = Convert.ToString(linha["Nome"]);
                     pessoa.Nascimento = Convert.ToDateTime(linha["Nascimento"]);
                     pessoa.Usuario = Convert.ToString(linha["Usuario"]);
@@ -110,11 +110,11 @@ namespace Negocios
             }
         }
 
-        public PessoaCollection ConsultarPorId(int idPessoa)
+        public CandidatoCollection ConsultarPorId(int idPessoa)
         {
             try
             {
-                PessoaCollection pessoaColecao = new PessoaCollection();
+                CandidatoCollection pessoaColecao = new CandidatoCollection();
 
                 acessoDadosMySql.LimparParametros();
                 acessoDadosMySql.AdicionarParametros("@IdPessoa",idPessoa);
@@ -123,8 +123,8 @@ namespace Negocios
 
                 foreach (DataRow linha in datatablePessoa.Rows)
                 {
-                    Pessoa pessoa = new Pessoa();
-                    pessoa.IdPessoa = Convert.ToInt32(linha["IdPessoa"]);
+                    Candidato pessoa = new Candidato();
+                    pessoa.IdCandidato = Convert.ToInt32(linha["IdPessoa"]);
                     pessoa.Nome = Convert.ToString(linha["Nome"]);
                     pessoa.Nascimento = Convert.ToDateTime(linha["Nascimento"]);
                     pessoa.Usuario = Convert.ToString(linha["Usuario"]);

@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ObjetoTransferencia
 {
-    public class Pessoa
+    class Usuario
     {
         public int IdPessoa { get; set; }
         public string Nome { get; set; }
-        public string Usuario { get; set; }
         public string Senha { get; set; }
-        public string Foto { get; set; }
-        public DateTime Nascimento { get; set; }
     }
 }
