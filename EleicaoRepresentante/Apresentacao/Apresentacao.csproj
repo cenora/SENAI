@@ -107,9 +107,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmAutenticacao.pt-BR.resx">
-      <DependentUpon>FrmAutenticacao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmAutenticacao.resx">
       <DependentUpon>FrmAutenticacao.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,8 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="representantes.ico" />
-    <None Include="Resources\representantes.ico" />
     <None Include="Resources\perfil.png" />
+    <None Include="Resources\representantes.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Negocios\Negocios.csproj">
