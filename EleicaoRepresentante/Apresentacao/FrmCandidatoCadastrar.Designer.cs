@@ -131,7 +131,7 @@
             // 
             // pictureBoxFoto
             // 
-            this.pictureBoxFoto.Image = global::Apresentacao.Properties.Resources.perfil;
+            //this.pictureBoxFoto.Image = global::Apresentacao.Properties.Resources.perfil;
             this.pictureBoxFoto.Location = new System.Drawing.Point(258, 12);
             this.pictureBoxFoto.Name = "pictureBoxFoto";
             this.pictureBoxFoto.Size = new System.Drawing.Size(165, 181);

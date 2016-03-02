@@ -1,0 +1,92 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Eleicao</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Eleicao</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Eleicao.csproj" File="Eleicao.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ClassDiagram1.cd">ClassDiagram1.cd</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Eleicao_TemporaryKey.pfx">Eleicao_TemporaryKey.pfx</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="eleicaoDataSet.xsd">eleicaoDataSet.xsd</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="eleicaoDataSet.Designer.cs">eleicaoDataSet.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="eleicaoDataSet.xsc">eleicaoDataSet.xsc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="eleicaoDataSet.xss">eleicaoDataSet.xss</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form1.cs">Form1.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form1.Designer.cs">Form1.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form1.resx">Form1.resx</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form2.cs">Form2.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form2.Designer.cs">Form2.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form2.resx">Form2.resx</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form3.cs">Form3.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form3.Designer.cs">Form3.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Form3.resx">Form3.resx</ProjectItem>
+      <Folder Name="fotos" TargetFolderName="fotos">
+        <ProjectItem ReplaceParameters="false" TargetFileName="alberto.jpg">alberto.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ana.jpg">ana.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="arthur a.jpg">arthur a.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="arthur h.jpg">arthur h.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="arthur.jpg">arthur.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="barbara.jpg">barbara.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="bianca.jpg">bianca.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="bruna.jpg">bruna.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="camila.jpg">camila.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="davi.jpg">davi.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="enrico.jpg">enrico.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="estevao.jpg">estevao.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="fernanda k.jpg">fernanda k.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="fernanda.jpg">fernanda.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="gabriela.jpg">gabriela.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="giovanna.jpg">giovanna.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="gustavo.jpg">gustavo.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="isadora.jpg">isadora.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="iury.jpg">iury.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="jeniffer.jpg">jeniffer.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="julia.jpg">julia.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="laryssa.jpg">laryssa.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="laura.jpg">laura.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="lorena.jpg">lorena.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="lucas.jpg">lucas.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="maria c.jpg">maria c.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="maria j.jpg">maria j.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="maria.jpg">maria.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="marlon.jpg">marlon.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="matheus h.jpg">matheus h.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="matheus.jpg">matheus.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="orlando.jpg">orlando.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="pedro h.jpg">pedro h.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="pedro.jpg">pedro.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="ramom.jpg">ramom.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="raphael.jpg">raphael.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="rui.jpg">rui.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="santiago.jpg">santiago.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="sidney.jpg">sidney.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="solanda.jpg">solanda.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="thayna.jpg">thayna.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="tiago.jpg">tiago.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="tulio.jpg">tulio.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="victor h.jpg">victor h.jpg</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="victor.jpg">victor.jpg</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="false" TargetFileName="app.manifest">app.manifest</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.resx">Resources.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.Designer.cs">Resources.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
