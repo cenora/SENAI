@@ -6,28 +6,30 @@ using System.Data;
 namespace Negocios
 {
     /// <summary>
-    /// Regras de Negocio para Pessoa
+    /// Regras de Negocio para candidato
     /// </summary>
     public class CandidatoNegocios
     {
         AcessoDadosMySQL acessoDadosMySql = new AcessoDadosMySQL();
+
         /// <summary>
-        /// Inserir pessoa no Banco
+        /// Inserir candidato no Banco
         /// </summary>
-        /// <param name="cancidato">Objeto Pessoa, DTO Pessoa</param>
+        /// <param name="candidato">Objeto Candidato, DTO Candidato</param>
         /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Inserir(Candidato cancidato)
+        public string Inserir(Candidato candidato)
         {
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@Nome",cancidato.Nome);
-                acessoDadosMySql.AdicionarParametros("@Nascimento", cancidato.Nascimento);
-                acessoDadosMySql.AdicionarParametros("@Usuario", cancidato.Usuario);
-                acessoDadosMySql.AdicionarParametros("@Senha", cancidato.Senha);
-                acessoDadosMySql.AdicionarParametros("@Foto", cancidato.Foto);
-                string idPessoa = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "uspPessoaInserir").ToString();
-                return idPessoa;
+                acessoDadosMySql.AdicionarParametros("legenda", candidato.Legenda);
+                acessoDadosMySql.AdicionarParametros("sexo", candidato.Sexo);
+                acessoDadosMySql.AdicionarParametros("foto", candidato.Foto);
+                acessoDadosMySql.AdicionarParametros("idTurma", candidato.IdTurma);
+                acessoDadosMySql.AdicionarParametros("nome", candidato.Nome);
+                acessoDadosMySql.AdicionarParametros("escola", candidato.Escola);
+                string idCandidato = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spCandidatoCadastro").ToString();
+                return idCandidato;
             }
             catch (Exception exception)
             {
@@ -35,43 +37,26 @@ namespace Negocios
             }
 
         }
+
         /// <summary>
-        /// Alterar pessoa no banco, enviar o Id
+        /// Alterar candidato no banco, enviar o Id
         /// </summary>
-        /// <param name="pessoa">Objeto Pessoa, DTO Pessoa</param>
+        /// <param name="candidato">Objeto Candidato, DTO Candidato</param>
         /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Alterar(Candidato pessoa)
+        public string Alterar(Candidato candidato)
         {
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdCandidato);
-                acessoDadosMySql.AdicionarParametros("@Nome", pessoa.Nome);
-                acessoDadosMySql.AdicionarParametros("@Nascimento", pessoa.Nascimento);
-                acessoDadosMySql.AdicionarParametros("@Usuario", pessoa.Usuario);
-                acessoDadosMySql.AdicionarParametros("@Senha", pessoa.Senha);
-                acessoDadosMySql.AdicionarParametros("@Foto", pessoa.Foto);
-                string idPessoa = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "uspPessoaAlterar").ToString();
-                return idPessoa;
-            }
-            catch (Exception exception)
-            {
-                return exception.Message;
-            }
-        }
-        /// <summary>
-        /// Excluir pessoa do banco
-        /// </summary>
-        /// <param name="pessoa">Objeto Pessoa, DTO Pessoa</param>
-        /// <returns>Id do Registro ou mensagem de erro</returns>
-        public string Excluir(Candidato pessoa)
-        {
-            try
-            {
-                acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@IdPessoa", pessoa.IdCandidato);
-                string idPessoa = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "uspPessoaExcluir").ToString();
-                return idPessoa;
+                acessoDadosMySql.AdicionarParametros("idCandidato", candidato.IdCandidato);
+                acessoDadosMySql.AdicionarParametros("legenda", candidato.Legenda);
+                acessoDadosMySql.AdicionarParametros("sexo", candidato.Sexo);
+                acessoDadosMySql.AdicionarParametros("foto", candidato.Foto);
+                acessoDadosMySql.AdicionarParametros("idTurma", candidato.IdTurma);
+                acessoDadosMySql.AdicionarParametros("nome", candidato.Nome);
+                acessoDadosMySql.AdicionarParametros("escola", candidato.Escola);
+                string idCandidato = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spCandidatoAtualiza").ToString();
+                return idCandidato;
             }
             catch (Exception exception)
             {
@@ -79,66 +64,129 @@ namespace Negocios
             }
         }
 
-        public CandidatoCollection ConsultaPorNome(string nome)
+        /// <summary>
+        /// Excluir candidato do banco
+        /// </summary>
+        /// <param name="candidato">Objeto Candidato, DTO Candidato</param>
+        /// <returns>Id do Registro ou mensagem de erro</returns>
+        public string Excluir(Candidato candidato)
         {
             try
             {
-                CandidatoCollection pessoaColecao = new CandidatoCollection();
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@Nome", nome);
+                acessoDadosMySql.AdicionarParametros("idCandidato", candidato.IdCandidato);
+                string idCandidato = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spCandidatoDeleta").ToString();
+                return idCandidato;
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+        }
 
-                DataTable dataTablePessoa = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "uspPessoaConsultarPorNome");
+        /// <summary>
+        /// Consultar Candidato por Turma
+        /// </summary>
+        /// <param name="turma">int</param>
+        /// <returns>CandidatoCollection</returns>
+        public CandidatoCollection ConsultaPorTurma(int turma)
+        {
+            try
+            {
+                CandidatoCollection candidatoColecao = new CandidatoCollection();
+                acessoDadosMySql.LimparParametros();
+                acessoDadosMySql.AdicionarParametros("idTurma", turma);
 
-                foreach (DataRow linha in dataTablePessoa.Rows)
+                DataTable dataTableCandidato = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spCandidatoSelecionaPorTurma");
+
+                foreach (DataRow linha in dataTableCandidato.Rows)
                 {
-                    Candidato pessoa = new Candidato();
-                    pessoa.IdCandidato = Convert.ToInt32(linha["IdPessoa"]);
-                    pessoa.Nome = Convert.ToString(linha["Nome"]);
-                    pessoa.Nascimento = Convert.ToDateTime(linha["Nascimento"]);
-                    pessoa.Usuario = Convert.ToString(linha["Usuario"]);
-                    pessoa.Senha = Convert.ToString(linha["Senha"]);
-                    pessoa.Foto = Convert.ToString(linha["Foto"]);
-                    pessoaColecao.Add(pessoa);
+                    Candidato candidato = new Candidato();
+                    candidato.IdCandidato = Convert.ToInt32(linha["idCandidato"]);
+                    candidato.Legenda = Convert.ToInt32(linha["legenda"]);
+                    candidato.Sexo = Convert.ToString(linha["sexo"]);
+                    candidato.Foto = Convert.ToString(linha["foto"]);
+                    candidato.Nome = Convert.ToString(linha["nome"]);
+                    candidato.Escola = Convert.ToString(linha["escola"]);
+                    candidato.TotalVotos = Convert.ToInt32(linha["totalVotos"]);
+                    candidatoColecao.Add(candidato);
 
                 }
 
-                return pessoaColecao;
+                return candidatoColecao;
             }
             catch (Exception exception)
             {
-                throw new Exception("Não foi possível consultar por Nome. Detalhes: "+exception.Message);
+                throw new Exception("Não foi possível consultar por Turma. Detalhes: "+exception.Message);
             }
         }
 
-        public CandidatoCollection ConsultarPorId(int idPessoa)
+        /// <summary>
+        /// Consultar Candidato por Id
+        /// </summary>
+        /// <param name="idCandidato">int</param>
+        /// <returns>CandidatoCollection</returns>
+        public CandidatoCollection ConsultarPorId(int idCandidato)
         {
             try
             {
-                CandidatoCollection pessoaColecao = new CandidatoCollection();
+                CandidatoCollection candidatoColecao = new CandidatoCollection();
 
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("@IdPessoa",idPessoa);
+                acessoDadosMySql.AdicionarParametros("idCandidato",idCandidato);
 
-                DataTable datatablePessoa = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "uspConsultarPorId");
+                DataTable datatableCandidato = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spCandidatoSelecionaPorId");
 
-                foreach (DataRow linha in datatablePessoa.Rows)
+                foreach (DataRow linha in datatableCandidato.Rows)
                 {
-                    Candidato pessoa = new Candidato();
-                    pessoa.IdCandidato = Convert.ToInt32(linha["IdPessoa"]);
-                    pessoa.Nome = Convert.ToString(linha["Nome"]);
-                    pessoa.Nascimento = Convert.ToDateTime(linha["Nascimento"]);
-                    pessoa.Usuario = Convert.ToString(linha["Usuario"]);
-                    pessoa.Senha = Convert.ToString(linha["Senha"]);
-                    pessoa.Foto = Convert.ToString(linha["Foto"]);
-                    pessoaColecao.Add(pessoa);
+                    Candidato candidato = new Candidato();
+                    candidato.Legenda = Convert.ToInt32(linha["legenda"]);
+                    candidato.Sexo = Convert.ToString(linha["sexo"]);
+                    candidato.Foto = Convert.ToString(linha["foto"]);
+                    candidato.Nome = Convert.ToString(linha["nome"]);
+                    candidato.Escola = Convert.ToString(linha["escola"]);
+                    candidato.TotalVotos = Convert.ToInt32(linha["totalVotos"]);
+                    candidatoColecao.Add(candidato);
                 }
 
-                return pessoaColecao;
+                return candidatoColecao;
             }
             catch (Exception ex)
             {
                 
-                throw new Exception("Não foi possivel consultar a pessoa pelo código. Detalhes: "+ex.Message);
+                throw new Exception("Não foi possivel consultar o candidato pelo código. Detalhes: "+ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Consultar Foto por Legenda
+        /// </summary>
+        /// <param name="legenda">int</param>
+        /// <returns>CandidatoCollection</returns>
+        public CandidatoCollection ConsultarFotoPorLegenda(int legenda)
+        {
+            try
+            {
+                CandidatoCollection candidatoColecao = new CandidatoCollection();
+
+                acessoDadosMySql.LimparParametros();
+                acessoDadosMySql.AdicionarParametros("legenda", legenda);
+
+                DataTable datatableCandidato = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spCandidatoSelecionaFotoPorLegenda");
+
+                foreach (DataRow linha in datatableCandidato.Rows)
+                {
+                    Candidato candidato = new Candidato();
+                    candidato.Foto = Convert.ToString(linha["foto"]);
+                    candidatoColecao.Add(candidato);
+                }
+
+                return candidatoColecao;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Não foi possivel consultar a foto do Candidato. Detalhes: " + ex.Message);
             }
         }
 

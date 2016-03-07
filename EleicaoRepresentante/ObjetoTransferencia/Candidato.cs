@@ -10,11 +10,7 @@ namespace ObjetoTransferencia
         public string Foto { get; set; }
         public int IdTurma { get; set; }
         public string Nome { get; set; }
-        public string escola { get; set; }
-
-        //apagar
-        public string Senha { get; set; }
-        public string Usuario { get; set; }
-        public DateTime Nascimento { get; set; }
+        public string Escola { get; set; }
+        public int TotalVotos { get; set; }
     }
 }

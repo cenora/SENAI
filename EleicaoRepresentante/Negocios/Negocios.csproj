@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CandidatoNegocios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioNegocios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcessoBancoDados\AcessoBancoDados.csproj">

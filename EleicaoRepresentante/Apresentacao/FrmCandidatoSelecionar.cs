@@ -24,7 +24,7 @@ namespace Apresentacao
         {
             CandidatoNegocios pessoaNegocios = new CandidatoNegocios();
             CandidatoCollection pessoaColecao = new CandidatoCollection();
-            pessoaColecao = pessoaNegocios.ConsultaPorNome(textBoxPesquisa.Text);
+            //pessoaColecao = pessoaNegocios.ConsultaPorNome(textBoxPesquisa.Text);
             dataGridViewPrincipal.DataSource = null;
             dataGridViewPrincipal.DataSource = pessoaColecao;
 

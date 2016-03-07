@@ -45,10 +45,10 @@ namespace Apresentacao
         private void PreencheFrm(Candidato candidato)
         {
             textBoxNome.Text = candidato.Nome.ToString();
-            textBoxSenha.Text = candidato.Senha.ToString();
-            textBoxUsuario.Text = candidato.Usuario.ToString();
+            //textBoxSenha.Text = candidato.Senha.ToString();
+            //textBoxUsuario.Text = candidato.Usuario.ToString();
             //textBoxCodigo.Text = candidato.IdPessoa.ToString();
-            PickerDataNascimento.Value = candidato.Nascimento;
+            //PickerDataNascimento.Value = candidato.Nascimento;
             //comboBoxIdioma.SelectedValue = pessoa;
             pictureBoxFoto.ImageLocation = candidato.Foto;
         }
@@ -78,9 +78,9 @@ namespace Apresentacao
             {
                 Candidato candidato = new Candidato();
                 candidato.Nome = textBoxNome.Text;
-                candidato.Usuario = textBoxUsuario.Text;
-                candidato.Senha = textBoxSenha.Text;
-                candidato.Nascimento = PickerDataNascimento.Value;
+                //candidato.Usuario = textBoxUsuario.Text;
+                //candidato.Senha = textBoxSenha.Text;
+                //candidato.Nascimento = PickerDataNascimento.Value;
                 candidato.Foto = pictureBoxFoto.ImageLocation;
                 //pessoa.idioma = comboBoxIdioma.SelectedItem;
                 CandidatoNegocios pessoaNegocios = new CandidatoNegocios();
@@ -104,9 +104,9 @@ namespace Apresentacao
                 Candidato candidato = new Candidato();
                 //candidato.IdPessoa = int.Parse(textBoxCodigo.Text);
                 candidato.Nome = textBoxNome.Text;
-                candidato.Usuario = textBoxUsuario.Text;
-                candidato.Senha = textBoxSenha.Text;
-                candidato.Nascimento = PickerDataNascimento.Value;
+                //candidato.Usuario = textBoxUsuario.Text;
+                //candidato.Senha = textBoxSenha.Text;
+                //candidato.Nascimento = PickerDataNascimento.Value;
                 candidato.Foto = pictureBoxFoto.ImageLocation;
                 //pessoa.idioma = comboBoxIdioma.SelectedItem;
                 CandidatoNegocios pessoaNegocios = new CandidatoNegocios();
