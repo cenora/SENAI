@@ -8,7 +8,7 @@ namespace Negocios
     /// <summary>
     /// Regras de Negocio para usuario
     /// </summary>
-    class UsuarioNegocios
+    public class UsuarioNegocios
     {
         AcessoDadosMySQL acessoDadosMySql = new AcessoDadosMySQL();
 
@@ -22,8 +22,8 @@ namespace Negocios
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("nome", usuario.Nome);
-                acessoDadosMySql.AdicionarParametros("senha", usuario.Senha);
+                acessoDadosMySql.AdicionarParametros("sp_nome", usuario.Nome);
+                acessoDadosMySql.AdicionarParametros("sp_senha", usuario.Senha);
 
                 string idUsuario = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spUsuarioCadastro").ToString();
                 return idUsuario;
@@ -45,9 +45,9 @@ namespace Negocios
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("idCandidato", usuario.IdUsuario);
-                acessoDadosMySql.AdicionarParametros("nome", usuario.Nome);
-                acessoDadosMySql.AdicionarParametros("senha", usuario.Senha);
+                acessoDadosMySql.AdicionarParametros("sp_idUsuario", usuario.IdUsuario);
+                acessoDadosMySql.AdicionarParametros("sp_nome", usuario.Nome);
+                acessoDadosMySql.AdicionarParametros("sp_senha", usuario.Senha);
                 string idUsuario = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spUsuarioAtualiza").ToString();
                 return idUsuario;
             }
@@ -67,7 +67,7 @@ namespace Negocios
             try
             {
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("idUsuario", usuario.IdUsuario);
+                acessoDadosMySql.AdicionarParametros("sp_idUsuario", usuario.IdUsuario);
                 string idUsuario = acessoDadosMySql.ExecutarManipulacao(CommandType.StoredProcedure, "spUsuarioDeleta").ToString();
                 return idUsuario;
             }
@@ -90,7 +90,7 @@ namespace Negocios
                 UsuarioCollection usuarioColecao = new UsuarioCollection();
 
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("idUsuario", idUsuario);
+                acessoDadosMySql.AdicionarParametros("sp_idUsuario", idUsuario);
 
                 DataTable datatableUsuario = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spUsuarioSelecionaPorId");
 
@@ -124,8 +124,8 @@ namespace Negocios
                 UsuarioCollection usuarioColecao = new UsuarioCollection();
 
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("nome", nome);
-                acessoDadosMySql.AdicionarParametros("senha", senha);
+                acessoDadosMySql.AdicionarParametros("sp_nome", nome);
+                acessoDadosMySql.AdicionarParametros("sp_senha", senha);
 
                 DataTable datatableUsuario = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spUsuarioLogin");
 
