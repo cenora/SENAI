@@ -79,34 +79,72 @@ namespace Negocios
 
 
         /// <summary>
-        /// Consultar Foto por Legenda
+        /// Consultar Usuario por ID
         /// </summary>
-        /// <param name="legenda">int</param>
-        /// <returns>CandidatoCollection</returns>
-        public CandidatoCollection ConsultarFotoPorLegenda(int legenda)
+        /// <param name="idUsuario">int</param>
+        /// <returns>UsuarioCollection</returns>
+        public UsuarioCollection ConsultarPorId(int idUsuario)
         {
             try
             {
-                CandidatoCollection candidatoColecao = new CandidatoCollection();
+                UsuarioCollection usuarioColecao = new UsuarioCollection();
 
                 acessoDadosMySql.LimparParametros();
-                acessoDadosMySql.AdicionarParametros("legenda", legenda);
+                acessoDadosMySql.AdicionarParametros("idUsuario", idUsuario);
 
-                DataTable datatableCandidato = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spCandidatoSelecionaFotoPorLegenda");
+                DataTable datatableUsuario = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spUsuarioSelecionaPorId");
 
-                foreach (DataRow linha in datatableCandidato.Rows)
+                foreach (DataRow linha in datatableUsuario.Rows)
                 {
-                    Candidato candidato = new Candidato();
-                    candidato.Foto = Convert.ToString(linha["foto"]);
-                    candidatoColecao.Add(candidato);
+                    Usuario usuario = new Usuario();
+                    usuario.Nome = Convert.ToString(linha["nome"]);
+                    usuario.Senha = Convert.ToString(linha["senha"]);
+                    usuarioColecao.Add(usuario);
                 }
 
-                return candidatoColecao;
+                return usuarioColecao;
             }
             catch (Exception ex)
             {
 
                 throw new Exception("Não foi possivel consultar a foto do Candidato. Detalhes: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Fazer login em Usuario
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="senha"></param>
+        /// <returns>True para login</returns>
+        public bool Login(string nome, string senha)
+        {
+            try
+            {
+                UsuarioCollection usuarioColecao = new UsuarioCollection();
+
+                acessoDadosMySql.LimparParametros();
+                acessoDadosMySql.AdicionarParametros("nome", nome);
+                acessoDadosMySql.AdicionarParametros("senha", senha);
+
+                DataTable datatableUsuario = acessoDadosMySql.ExecutarConsulta(CommandType.StoredProcedure, "spUsuarioLogin");
+
+                foreach (DataRow linha in datatableUsuario.Rows)
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.IdUsuario = Convert.ToInt32(linha["idUsuario"]);
+                    usuarioColecao.Add(usuario);
+                }
+
+                if (usuarioColecao.Count != 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possivel fazer login. Detalhes: " + ex.Message);
             }
         }
 

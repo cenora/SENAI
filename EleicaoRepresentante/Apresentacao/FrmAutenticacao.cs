@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ObjetoTransferencia;
+using Negocios;
 
 namespace Apresentacao
 {
     public partial class FrmAutenticacao : Form
     {
+
         public FrmAutenticacao()
         {
             InitializeComponent();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
